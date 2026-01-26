@@ -107,3 +107,14 @@ System Logic
     - Pie chart
     ↓
     Rendered in Django Template
+
+Fonts:
+title: "Bree Serif", serif;
+p: "Crimson Text", serif;
+
+Color:
+#5fa8d3
+#cae9ff
+#1b4965
+#62b6cb
+#bee9e8
