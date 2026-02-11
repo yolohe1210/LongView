@@ -118,3 +118,8 @@ Color:
 #1b4965
 #62b6cb
 #bee9e8
+
+Week 5/6
+1. finish simple web
+2. write simple function for calculation
+3. set database

@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LongView</title>
+    <title>LongView | Add Trade</title>
     <link rel="stylesheet" href="style.css">
     <link rel="script" href="main.js">
 </head>
 <body>
     <header>
+        <img src="logo.png" alt="LongView Logo" class="logo">
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -18,22 +19,38 @@
         </nav>
     </header>
     <main>
-        <div class="add">
+        <form action="/submit-trade" method="POST">
             <h1>Add Trade</h1>
-            <form>
-                <label>Asset</label>
-                <input type="text" name="asset">
-                <label>Purchase Date</label>
-                <input type="text" name="date">
-                <label>Quantity</label>
-                <input type="text" name="quantity">
-                <label>Price</label>
-                <input type="text" name="proce">
-                <input type="text" value="Note:" name="note">
-                <button type="submit">Confirm</button>
-            </form>
-        </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Asset</th>
+                    <th>Purchase Date</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" name="asset"></td>
+                    <td><input type="date" name="date"></td>
+                    <td><input type="number" name="quantity"></td>
+                    <td><input type="number" name="price"></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                    <label for="note">Note:</label>
+                    <textarea id="note" name="note" rows="3"></textarea>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="submit">Confirm</button>
+        </form>
     </main>
-    <footer><p>2026 | LongView | Yin He</p></footer>
+    <footer>
+        <img src="logo-photo.png" alt="LongView Logo Photo" class="logo-photo">
+        <p>2026 | LongView | Yin He</p>
+    </footer>
 </body>
 </html>

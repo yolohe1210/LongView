@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LongView</title>
+    <title>LongView | Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="script" href="main.js">
 </head>
 <body>
     <header>
+        <img src="logo.png" alt="LongView Logo" class="logo">
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -20,20 +21,24 @@
     <main>
         <div class="value">
             <h1>My Portfolio</h1>
-            <section class="value-cards">
-                <h2>Current Value</h2>
-                <h3>XXXXX</h3>
-            </section>
-            <section class="value-cards">
-                <h2>Total Investment</h2>
-                <h3>XXXXX</h3>
-            </section>
-            <section class="value-cards">
-                <h2>Profit / Loss</h2>
-                <h3>XXXX</h3>
-            </section>
-            <a href="add.html"><button>Add Trade</button></a>
-            <a href="history.html"><button>View History</button></a>
+            <div class="value-section">
+                <section class="value-cards">
+                    <h2>Current Value</h2>
+                    <h3>XXXXX</h3>
+                </section>
+                <section class="value-cards">
+                    <h2>Total Investment</h2>
+                    <h3>XXXXX</h3>
+                </section>
+                <section class="value-cards">
+                    <h2>Profit / Loss</h2>
+                    <h3>XXXX</h3>
+                </section>
+            </div>
+            <div class="value-buttons">
+                <a href="add.html"><button>Add Trade</button></a>
+                <a href="history.html"><button>View History</button></a>
+            </div>
         </div>
         <div class="chart1">
             <h2>Portfolio Value Over Time</h2>
@@ -42,6 +47,9 @@
             <h2>Asset Allocation</h2>
         </div>
     </main>
-    <footer><p>2026 | LongView | Yin He</p></footer>
+    <footer>
+        <img src="logo-photo.png" alt="LongView Logo Photo" class="logo-photo">
+        <p>2026 | LongView | Yin He</p>
+    </footer>
 </body>
 </html>
