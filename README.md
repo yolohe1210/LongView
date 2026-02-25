@@ -119,7 +119,25 @@ Color:
 #62b6cb
 #bee9e8
 
-Week 5/6
+Week 5/6 Tasks:
 1. finish simple web
 2. write simple function for calculation
 3. set database
+
+All trades and prices are manually entered
+Portfolio metrics are calculated by the system
+
+[ User Input ]
+   ↓
+Trades (CSV)
+Prices (CSV)
+   ↓
+[ Python Calculation Layer ]
+   ↓
+Portfolio Metrics
+   ↓
+Charts / Dashboard
+
+Week 7/8 Tasks:
+1. Finilize calculation
+2. Import Flask
