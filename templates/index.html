@@ -4,51 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LongView | Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="script" href="main.js">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="LongView Logo" class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="LongView Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="add.html">Add</a></li>
-                <li><a href="history.html">History</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('add_trade') }}">Add</a></li>
+                <li><a href="{{ url_for('history') }}">History</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <div class="value">
             <h1>My Portfolio</h1>
+
             <div class="value-section">
                 <section class="value-cards">
                     <h2>Current Value</h2>
-                    <h3>XXXXX</h3>
+                    <h3>{{ data.current_value }}</h3>
                 </section>
+
                 <section class="value-cards">
                     <h2>Total Investment</h2>
-                    <h3>XXXXX</h3>
+                    <h3>{{ data.total_invested }}</h3>
                 </section>
+
                 <section class="value-cards">
                     <h2>Profit / Loss</h2>
-                    <h3>XXXX</h3>
+                    <h3>{{ data.return }}</h3>
                 </section>
             </div>
+
             <div class="value-buttons">
-                <a href="add.html"><button>Add Trade</button></a>
-                <a href="history.html"><button>View History</button></a>
+                <a href="{{ url_for('add_trade') }}"><button>Add Trade</button></a>
+                <a href="{{ url_for('history') }}"><button>View History</button></a>
             </div>
         </div>
-        <div class="chart1">
-            <h2>Portfolio Value Over Time</h2>
-        </div>
-        <div class="chart2">
-            <h2>Asset Allocation</h2>
-        </div>
     </main>
+
     <footer>
-        <img src="logo-photo.png" alt="LongView Logo Photo" class="logo-photo">
+        <img src="{{ url_for('static', filename='logo-photo.png') }}" alt="LongView Logo Photo" class="logo-photo">
         <p>2026 | LongView | Yin He</p>
     </footer>
 </body>

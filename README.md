@@ -141,3 +141,7 @@ Charts / Dashboard
 Week 7/8 Tasks:
 1. Finilize calculation
 2. Import Flask
+
+Week 9/10:
+1. Finalize Flask to make sure the website works
+2. Add update price page

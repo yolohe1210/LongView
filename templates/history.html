@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LongView | Trade History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="LongView Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('add_trade') }}">Add</a></li>
+                <li><a href="{{ url_for('history') }}">History</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Trade Hostory</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Asset</th>
+                <th>Purchase Date</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for trade in trades %}
+            <tr>
+                <td>{{ trade.asset }}</td>
+                <td>{{ trade.date }}</td>
+                <td>{{ trade.quantity }}</td>
+                <td>{{ trade.price }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <img src="static/logo-photo.png" alt="LongView Logo Photo" class="logo-photo">
+        <p>2026 | LongView | Yin He</p>
+    </footer>
+</body>
+</html>
