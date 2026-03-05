@@ -5,6 +5,7 @@
 import csv
 import os
 from decimal import Decimal, ROUND_HALF_UP
+from collections import defaultdict
 
 TRADE_FILE = "trade.csv"
 PRICE_FILE = "price.csv"
@@ -191,3 +192,58 @@ def get_trade_history():
         print("Error loading trade history:", e)
 
     return trades
+
+
+# =========================
+# Portfolio History
+# =========================
+
+def get_portfolio_history():
+    trades = get_trade_history()
+    trades_sorted = sorted(trades, key=lambda x: x["date"])
+    
+    # 按日期收集价格更新
+    price_updates = defaultdict(dict)
+    try:
+        with open("price.csv", "r") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                date = row["updated_at"]
+                asset = row["asset"].strip()
+                price = Decimal(str(row["current_price"]))
+                price_updates[date][asset] = price
+    except Exception as e:
+        print("Error loading price updates:", e)
+    
+    # 按日期收集交易
+    trades_by_date = defaultdict(list)
+    for trade in trades_sorted:
+        trades_by_date[trade["date"]].append(trade)
+    
+    all_dates = sorted(set(list(trades_by_date.keys()) + list(price_updates.keys())))
+    
+    holdings = defaultdict(Decimal)
+    last_price_per_asset = {}
+    history = []
+    
+    for date in all_dates:
+        # 先处理当天交易
+        for trade in trades_by_date.get(date, []):
+            asset = trade["asset"].strip()
+            qty = Decimal(str(trade["quantity"]))
+            trade_price = Decimal(str(trade["price"]))
+            
+            holdings[asset] += qty
+            # 如果当天没有 price 更新，就用交易价格
+            if asset not in price_updates.get(date, {}):
+                last_price_per_asset[asset] = trade_price
+        
+        # 再处理当天 price.csv 更新
+        for asset, price in price_updates.get(date, {}).items():
+            last_price_per_asset[asset] = price
+        
+        # 计算当天组合总价值
+        total_value = sum(holdings[a] * last_price_per_asset.get(a, Decimal("0")) for a in holdings)
+        history.append({"date": date, "value": float(total_value)})
+    
+    return history

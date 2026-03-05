@@ -6,6 +6,7 @@
     <title>LongView | Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -13,7 +14,8 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('add_trade') }}">Add</a></li>
+                <li><a href="{{ url_for('add_trade') }}">Add</a></li> 
+                <li><a href="{{ url_for('update_price') }}">Update</a></li>
                 <li><a href="{{ url_for('history') }}">History</a></li>
             </ul>
         </nav>
@@ -22,34 +24,49 @@
     <main>
         <div class="value">
             <h1>My Portfolio</h1>
-
             <div class="value-section">
                 <section class="value-cards">
                     <h2>Current Value</h2>
                     <h3>{{ data.current_value }}</h3>
                 </section>
-
                 <section class="value-cards">
                     <h2>Total Investment</h2>
                     <h3>{{ data.total_invested }}</h3>
                 </section>
-
                 <section class="value-cards">
                     <h2>Profit / Loss</h2>
-                    <h3>{{ data.return }}</h3>
+                    <h3>{{ (data.return * 100)|round(2) }}%</h3>
                 </section>
             </div>
-
             <div class="value-buttons">
                 <a href="{{ url_for('add_trade') }}"><button>Add Trade</button></a>
+                <a href="{{ url_for('update_price') }}"><button>Update Price</button></a>
                 <a href="{{ url_for('history') }}"><button>View History</button></a>
             </div>
         </div>
+        <div class="charts-container">
+            <div class="chart-box">
+                <h2>Portfolio Allocation</h2>
+                <canvas id="allocationChart" width="300" height="300"></canvas>
+            </div>
+
+            <div class="chart-box">
+                <h2>Portfolio Value Over Time</h2>
+                <canvas id="profitTrendChart"  width="500" height="300"></canvas>
+            </div>
+        </div>
+    </div>
     </main>
 
     <footer>
         <img src="{{ url_for('static', filename='logo-photo.png') }}" alt="LongView Logo Photo" class="logo-photo">
         <p>2026 | LongView | Yin He</p>
     </footer>
+    <script id="portfolio-data" type="application/json">
+        {{ data.asset_breakdown | tojson | safe }}
+    </script>
+    <script id="portfolio-history" type="application/json">
+        {{ data.portfolio_history | tojson | safe }}
+    </script>
 </body>
 </html>

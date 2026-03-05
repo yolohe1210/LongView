@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     data = portfolio.get_portfolio_summary()
-    print(data)   
+    data["portfolio_history"] = portfolio.get_portfolio_history()
     return render_template("index.html", data=data)
 
 
@@ -28,6 +28,18 @@ def add_trade():
 def history():
     trades = portfolio.get_trade_history()
     return render_template("history.html", trades=trades)
+
+
+@app.route("/update", methods=["GET", "POST"])
+def update_price():
+    if request.method == "POST":
+        portfolio.update_price(
+            request.form["asset"],
+            request.form["price"],
+            request.form["date"]
+        )
+        return redirect("/")
+    return render_template("update.html")
 
 
 if __name__ == "__main__":
