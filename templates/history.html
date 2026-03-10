@@ -20,30 +20,32 @@
         </nav>
     </header>
     <main>
-        <h1>Trade Hostory</h1>
-        <table>
-            <thead>
-            <tr>
-                <th>Asset</th>
-                <th>Purchase Date</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for trade in trades %}
-            <tr>
-                <td>{{ trade.asset }}</td>
-                <td>{{ trade.date }}</td>
-                <td>{{ trade.quantity }}</td>
-                <td>{{ trade.price }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        <div class="history">
+            <h1>Trade History</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Asset</th>
+                    <th>Purchase Date</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for trade in trades %}
+                <tr>
+                    <td>{{ trade.asset }}</td>
+                    <td>{{ trade.date }}</td>
+                    <td>{{ trade.quantity }}</td>
+                    <td>{{ trade.price }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>    
     </main>
     <footer>
-        <img src="static/logo-photo.png" alt="LongView Logo Photo" class="logo-photo">
+        <img src="{{ url_for('static', filename='logo-photo.png') }}" alt="LongView Logo Photo" class="logo-photo">
         <p>2026 | LongView | Yin He</p>
     </footer>
 </body>
