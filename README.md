@@ -37,6 +37,13 @@ Deployment:
 3. The backend calculates portfolio value and allocation.
 4. The dashboard visualizes portfolio performance using charts.
 
+## What I learned:
+
+- Full-stack web development
+- Data handling and calculations
+- UI/UX design basics
+- Deployment workflow
+
 ## Future Improvements
 
 - Automatic market price updates via financial APIs
@@ -46,5 +53,4 @@ Deployment:
 - Mobile-friendly UI
 
 ## Author
-
-Built as a personal project to practice full-stack web development with Flask.
+Yin He
